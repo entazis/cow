@@ -105,6 +105,9 @@ function generateMoo() {
     setTimeout(() => {
         cowContainer.style.background = '#fff';
     }, 100);
+    
+    // Track the moo
+    if (window.trackEvent) trackEvent('moo');
 }
 
 // Event listeners
