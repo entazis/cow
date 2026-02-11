@@ -68,7 +68,14 @@ const cowMoods = [
                 ||     ||`
 ];
 
-let mooCount = parseInt(localStorage.getItem('mooCount') || '0');
+// Reset moo count daily
+const today = new Date().toDateString();
+const storedDate = localStorage.getItem('mooDate');
+let mooCount = storedDate === today ? parseInt(localStorage.getItem('mooCount') || '0') : 0;
+if (storedDate !== today) {
+    localStorage.setItem('mooDate', today);
+    localStorage.setItem('mooCount', '0');
+}
 
 const cowContainer = document.getElementById('cowContainer');
 const mooButton = document.getElementById('mooButton');
